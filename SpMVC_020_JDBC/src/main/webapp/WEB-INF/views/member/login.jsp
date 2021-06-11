@@ -9,9 +9,9 @@
 	form#login_form {
 		width: 400px;
 		padding: 40px;
-		margin: 50px auto;
+		margin: 150px auto;
 		
-		background-color: #191919;
+		background-color: #006574;
 		text-align: center;
 		border-radius: 20px;
 	}
@@ -30,9 +30,10 @@
 		color: white;
 		border-radius: 25px; 
 		background: none;
-		border: 2px solid #3498db;
+		border: 2px solid white;
 		text-align: center;
-		transition: 0.5s;		
+		transition: 0.5s;
+				
 	}
 	form#login_form input:focus {
 		width: 280px;

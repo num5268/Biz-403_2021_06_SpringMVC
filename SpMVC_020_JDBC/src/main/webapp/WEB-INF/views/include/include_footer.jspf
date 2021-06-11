@@ -4,12 +4,18 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <style>
 	footer {
-	background-color: black;
+	background: linear-gradient(white 5% ,#1aaaad,#17789f);
 		color: white;
 		padding: 5px;
+		height: 80px;
+		position: absolute;
+		bottom: 0;
+		width: 100%
+		
 	}
 	address{
 		text-align: center;
+		padding-top: 40px;
 		
 	}
 	

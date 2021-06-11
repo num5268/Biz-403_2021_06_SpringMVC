@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping(value="/comp")
+@RequestMapping( value="/comp" )
 public class CompController {
 	
 	protected final CompDao compDao;
@@ -22,6 +22,11 @@ public class CompController {
 	public CompController(CompDao compDao, CompService compService) {
 		this.compDao = compDao;
 		this.compService = compService;
+	}
+	
+	@RequestMapping(value={"/","" }, method=RequestMethod.GET)
+	public String list() {
+		return "comp/list";
 	}
 
 	// localhost:8080/jdbc/comp/insert로 호출되는 함수

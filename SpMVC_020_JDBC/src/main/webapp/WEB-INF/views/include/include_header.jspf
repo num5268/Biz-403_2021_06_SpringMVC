@@ -9,7 +9,7 @@
 		margin: 0;
 	}
 	header {
-		background-color: #bcd1e5;
+		background-color: #006574;
 		color: white;
 		text-shadow: 1px 1px 1px black;
 		text-align: center;
