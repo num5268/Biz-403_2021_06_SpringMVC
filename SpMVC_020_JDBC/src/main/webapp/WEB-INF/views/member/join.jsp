@@ -14,7 +14,7 @@
 		padding:40px;
 		margin:50px auto;
 		
-		background-color: green;
+		background-color: #006574;
 		text-align: center;
 		border-radius: 20px;
 		
@@ -37,7 +37,7 @@
 		
 		color:white;
 		
-		border:2px solid #3498db;
+		border:2px solid #A7EEFF;
 		border-radius: 25px;
 		
 		background: none;
@@ -79,7 +79,7 @@
 	form#join_form button:hover {
 		background-color: #2ecc71;
 	}
-
+	
 </style>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf" %>

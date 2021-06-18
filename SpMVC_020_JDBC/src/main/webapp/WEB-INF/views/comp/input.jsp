@@ -8,6 +8,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
 	<form method="POST">
+	<section class="main_sec">
 		<fieldset>
 			<legend>출판사 정보</legend>
 			<div>
@@ -36,6 +37,7 @@
 				<button type="button" class="btn_list comp">리스트로</button>
 			</div>
 		</fieldset>
+		</section>
 	</form>
 	<script>
 	    // const : 상수를 선언하는 키워드

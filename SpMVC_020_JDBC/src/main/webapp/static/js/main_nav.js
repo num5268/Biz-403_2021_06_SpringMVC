@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
       let menuText = e.target.textContent;
       // `` backTit : 역 작은 따옴표
       // JS에서 변수를 포함하는 문자열을 생성할때 사용한다
+      // let urlPath = rootPath
+      // 각각의 메뉴를 클릭했을때 공통으로 필요한
+      // rootPath 문자열 생성
       let urlPath = `${rootPath}`;
 
       if (menuText === "HOME") {
@@ -22,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
         urlPath += "/member/login";
       } else if (menuText === "회원가입") {
         urlPath += "/member/join";
+      } else if (menuText === "로그아웃") {
+        urlPath += "/member/logout";
+      } else if (e.target.id === "mypage") {
+        urlPath += "/member/mypage";
       }
       //alert(`내가 가야할곳 ${urlPath}`);
       location.href = urlPath;

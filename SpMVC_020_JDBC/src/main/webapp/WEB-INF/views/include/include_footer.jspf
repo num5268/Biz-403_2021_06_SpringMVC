@@ -8,8 +8,6 @@
 		color: white;
 		padding: 5px;
 		height: 80px;
-		position: absolute;
-		bottom: 0;
 		width: 100%
 		
 	}
