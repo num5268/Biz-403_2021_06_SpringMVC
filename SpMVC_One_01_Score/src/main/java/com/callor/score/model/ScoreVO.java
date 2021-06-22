@@ -16,6 +16,6 @@ public class ScoreVO {
 	private String sc_seq; //	CHAR(8)
 	private String sc_stnum; //	CHAR(8)
 	private String sc_subject; //	nVARCHAR2(20)
-	private String sc_score; //	NUMBER
+	private int sc_score; //	NUMBER
 
 }

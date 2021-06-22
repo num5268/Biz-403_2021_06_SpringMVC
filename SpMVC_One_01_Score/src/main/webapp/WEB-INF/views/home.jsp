@@ -40,31 +40,30 @@ nav#main_nav li:nth-of-type(4) {
 </style>
 </head>
 <body>
-	<article>
-		<h1>대한 고교 성적처리 2021 v1</h1>
-	</article>
-	<nav id="main_nav">
-		<ul>
-			<li>Home</li>
-			<li>학생정보</li>
-			<li>성적알림표</li>
-			<li>로그인</li>
-		</ul>
-	</nav>
-
-	<section class="st_table">
-		<table>
-			<tr>
-				<td>학번</td>
-				<td>이름</td>
-				<td>전공</td>
-				<td>학년</td>
-				<td>응시과목</td>
-				<td>총점</td>
-				<td>평균</td>
-			</tr>
-		</table>
-	</section>
-	<footer> </footer>
+	 <section class="main_list">
+      <table class="container">
+        <tr>
+          <th>학번</th>
+          <th>이름</th>
+          <th>전공</th>
+          <th>학년</th>
+          <th>응시과목</th>
+          <th>총점</th>
+          <th>평균</th>
+        </tr>
+       	<c:forEach items="${LIST}" var="LIST" >
+		<tr data-num="${LIST.st_num}">
+			<td>${LIST.st_num}</td>
+			<td>${LIST.st_name}</td>
+			<td>${LIST.st_dept}</td>
+			<td>${LIST.st_grade}</td>
+			<td>${LIST.sc_subject}</td>
+			<td>${LIST.sc_scores}</td>
+			<td>${LIST.sc_avg}</td>
+		</tr>	
+		</c:forEach>	
+      </table>
+    </section>
+    <footer></footer>
 </body>
 </html>

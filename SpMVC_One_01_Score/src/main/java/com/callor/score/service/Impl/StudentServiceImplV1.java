@@ -12,7 +12,7 @@ public class StudentServiceImplV1 implements StudentService{
 	
 	
 	@Override
-	public List<StudentVO> listAll() {
+	public List<StudentVO> selectAll() {
 		// TODO Auto-generated method stub
 		
 		// String sql = " SELECT * FROM tbl_student ";
@@ -36,6 +36,18 @@ public class StudentServiceImplV1 implements StudentService{
 
 	@Override
 	public Integer delete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public StudentVO findById(String pk) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<StudentVO> findByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}

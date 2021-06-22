@@ -6,7 +6,7 @@ import com.callor.score.model.StudentVO;
 
 public interface StudentDao {
 	
-	public List<StudentVO> listAll();
+	public List<StudentVO> selectAll();
 	
 	
 

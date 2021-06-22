@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 import com.callor.score.model.StudentVO;
 import com.callor.score.pesistance.StudentDao;
@@ -21,7 +20,7 @@ public class StudentDaoImplV1 implements StudentDao{
 	}
 
 	@Override
-	public List<StudentVO> listAll() {
+	public List<StudentVO> selectAll() {
 		// TODO Auto-generated method stub
 		
 		String sql = " SELECT * FROM tbl_student ";
