@@ -116,8 +116,8 @@ table tr:hover {
 					<td>${LIST.st_dept}</td>
 					<td>${LIST.st_grade}</td>
 					<td>${LIST.sc_subject}</td>
-					<td></td>
-					<td></td>
+					<td>${LIST.sc_scores}</td>
+					<td>${LIST.sc_avg}</td>
 				</tr>
 			</c:forEach>
 		</table>
