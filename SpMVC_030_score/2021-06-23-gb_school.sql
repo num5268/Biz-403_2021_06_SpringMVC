@@ -32,7 +32,13 @@ VALUES ("20210001","S002",88);
 INSERT INTO tbl_score (sc_stnum,sc_sbcode,sc_score)
 VALUES ("20210001","S003",77);
 
+drop table tbl_student;
 drop table tbl_subject;
+
+select * from tbl_subject;
+select * from tbl_student;
+select * from tbl_score;
+delete from tbl_studnet where tbl_studnet;
 create table tbl_subject(
 sb_code	CHAR(4)		PRIMARY KEY,
 sb_name	VARCHAR(20)	NOT NULL	,

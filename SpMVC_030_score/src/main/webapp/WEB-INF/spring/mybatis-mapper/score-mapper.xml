@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.callor.score.dao.ScoreDao">
+<mapper namespace="com.callor.score.dao.ext.ScoreDao">
 
 	<select id="selectAll" resultType="ScoreVO">
 		SELECT * FROM tbl_score
@@ -16,9 +16,9 @@
 	<select id="selectViewAll" resultType="ScoreDTO">
 		SELECT sc_seq,
 				sc_stnum,
-				ST.st_name st_name,
+				ST.st_name sc_stname,
 				sc_sbcode,
-				SB.sb_name sb_name,
+				SB.sb_name sc_sbname,
 				sc_score
 		FROM tbl_score SC
 			LEFT JOIN tbl_student ST

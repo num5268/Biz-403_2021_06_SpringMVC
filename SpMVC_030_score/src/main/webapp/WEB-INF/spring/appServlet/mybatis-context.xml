@@ -27,7 +27,7 @@
 			value="com.callor.score.model" />
 	</bean>
 	<mybatis-spring:scan
-		base-package="com.callor.score.dao" />
+		base-package="com.callor.score.dao.ext" />
 	<!-- sessionTemplate -->
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
