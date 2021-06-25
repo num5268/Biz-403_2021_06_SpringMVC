@@ -72,14 +72,39 @@ tbl_subject, tbl_score table을 가지고
 select SB.sb_code, SB.sb_name, SB.sb_prof,
 		SC.sc_stnum, SC.sc_score
 FROM tbl_subject SB
-	LEFT JOIN (select * FROM tbl_score WHERE sc_stnum)
+	LEFT JOIN (select * FROM tbl_score WHERE sc_stnum = '20210001')
 		ON SC.sc_sbcode = SB.sb_code
-	WHERE SC.sc_stnum = '2021001';
+	WHERE SC.sc_stnum = '20210001';
+
+select SB.sb_code, SB.sb_name, SB.sb_prof,
+		SC.sc_stnum, SC.sc_score
+FROM tbl_subject SB
+	LEFT JOIN tbl_score SC
+		ON SC.sc_sbcode = SB.sb_code;
+/*
+	과목리스트를 전체 보여주고,
+    학생의 성적 table을 join하여
+    학생의 점수가 있으면 점수를 보이고
+    없으면 null로 보여주는 join sql문
+    
+    이 join 명령문에
+    특정한 학번을 조건으로 부여하여
+    한 학생의 성적여부를 조회하는 sql문 만들기
+    
+    순수한 join을 사용하여 한 학생의 성적을 조회하는데
+    학생의 성적이 tbl_score table에 있으면 점수를 보이고
+    없음녀 null 표현하기 위하여
+    where 절에서 학번을 조건으로 부여하지 않고
+    join문의 on 절에 학번을 조건으로 부여한다
+*/
 
 select SB.sb_code, SB.sb_name, SB.sb_prof,
 		SC.sc_stnum, SC.sc_score
 FROM tbl_subject SB
 	LEFT JOIN tbl_score SC
 		ON SC.sc_sbcode = SB.sb_code
-        and SC.sc_stnum = '2021001';
-	and SC.sc_stnum = '2021001' LIMIT 5;
+	and SC.sc_stnum = '20210001' LIMIT 5;
+
+select count(*) FROM tbl_score
+WHERE sc_stnum = '20210002';
+select * from tbl_score;
