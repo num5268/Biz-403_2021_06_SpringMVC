@@ -106,6 +106,39 @@
 	box-shadow: 2px 2px 2px 2px gray;
 	cursor: pointer;
 	}
+	button.save {
+	background-color: blue;
+	color:white;
+	}
+	button.reset {
+		background-color: olive;
+		color:white;
+	}
+	button.list {
+		background-color: navy;
+		color:white;
+	}
+	button.home {
+		background-color: black;
+		color:white;
+	}
+	button.update {
+		background-color: green;
+		color: white;
+	}
+	button.delete {
+		background-color: red;
+		color: white;
+	}
+	button.insert {
+		background-color: rgba(0,0,200,1);
+		color: white;
+	}
+	button.student.list {
+		background-color: orange;
+		color:white;
+		text-shadow: 1px 1px 1px black;
+	}
 	form {
 		width: 90%;
 		margin: 0 auto 10px auto;
@@ -136,18 +169,6 @@
 	form input:hover {
 	background-color: #bbb;
 }
-form button.save {
-	background-color: blue;
-	color:white;
-}
-form button.reset {
-	background-color: olive;
-	color:white;
-}
-form button.list {
-	background-color: navy;
-	color:white;
-}
 	
 </style>
 <body>
@@ -166,6 +187,9 @@ form button.list {
 		</c:when>
 		<c:when test="${BODY == 'STUDENT_INPUT' }">
 			<%@ include file = "/WEB-INF/views/student/input.jsp" %>
+		</c:when>
+		<c:when test="${BODY == 'STUDENT_DETAIL' }">
+			<%@ include file = "/WEB-INF/views/student/detail.jsp" %>
 		</c:when>
 		
 		<c:otherwise>
@@ -203,7 +227,23 @@ if(std_insert) {
 }
 if(home) {
 	home.addEventListener("click",(e)=>{
-		location.href = "${rootPath}/student"
+		location.href = "${rootPath}/"
+	})
+}
+let table = document.querySelector("table.detail")
+if(table) {
+	table.addEventListener("click",(e) => {
+		
+		let target = e.target
+		let tagName = target.tagName
+		
+		if(tagName === "TD"){
+			let tr = target.closest("TR")
+			let stNum = tr.dataset.stnum
+			
+			location.href
+				="${rootPath}/student/detail?st_num=" + stNum
+		}
 	})
 }
 </script>

@@ -54,3 +54,32 @@ insert into tbl_subject( sb_code, sb_name, sb_prof)
 values( "S004","음악",'신교수');
 insert into tbl_subject( sb_code, sb_name, sb_prof)
 values( "S005","과학",'백교수');
+
+/*
+tbl_subject, tbl_score table을 가지고
+각 학생의 성적 리스트를 출력해보기
+과목 리스트를 출력하고 ,
+각 과목의 성적이 입력된 학생의 리스트를 확인하기a
+
+학번을 조건으로 하여 한 학생의 성적입력 여부를 확인하기
+
+학생의 점수가 입력된 과목과 입력되지 않은 과목을 
+알고싶다
+
+*/
+
+-- subquery
+select SB.sb_code, SB.sb_name, SB.sb_prof,
+		SC.sc_stnum, SC.sc_score
+FROM tbl_subject SB
+	LEFT JOIN (select * FROM tbl_score WHERE sc_stnum)
+		ON SC.sc_sbcode = SB.sb_code
+	WHERE SC.sc_stnum = '2021001';
+
+select SB.sb_code, SB.sb_name, SB.sb_prof,
+		SC.sc_stnum, SC.sc_score
+FROM tbl_subject SB
+	LEFT JOIN tbl_score SC
+		ON SC.sc_sbcode = SB.sb_code
+        and SC.sc_stnum = '2021001';
+	and SC.sc_stnum = '2021001' LIMIT 5;

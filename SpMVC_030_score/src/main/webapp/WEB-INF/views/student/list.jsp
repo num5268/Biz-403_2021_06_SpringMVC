@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <style>
+/*
 	button.student.insert {
 		background-color: navy;
 		color: white;
@@ -12,9 +13,10 @@
 		color:white;
 		
 	}
+	*/
 </style>
 	<h2>학생정보 리스트</h2>
-	<table>
+	<table class="student_list detail">
 		<tr>
 			<th>학번</th>
 			<th>이름</th>
@@ -32,12 +34,12 @@
 			<c:otherwise>
 				<c:forEach items="${STUDENTS}" var="STD">
 					<tr data-stnum="${STD.st_num }">
-						<td>${STD.st_num }</td>
-						<td>${STD.st_name }</td>
-						<td>${STD.st_dept }</td>
-						<td>${STD.st_grade }</td>
-						<td>${STD.st_tel }</td>
-						<td>${STD.st_addr }</td>
+						<td>${STD.st_num}</td>
+						<td>${STD.st_name}</td>
+						<td>${STD.st_dept}</td>
+						<td>${STD.st_grade}</td>
+						<td>${STD.st_tel}</td>
+						<td>${STD.st_addr}</td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>
