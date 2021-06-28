@@ -17,12 +17,39 @@ VALUES ("20210002","이몽룡","몰라공학",2,"010-2222-3333","남원시");
 
 INSERT INTO tbl_student (st_num, st_name,st_dept,st_grade,st_tel,st_addr)
 VALUES ("20210003","성춘향","전자공학",2,"010-3333-3333","광주시");
+
+USE db_school;
+/*
+TABLE에 
+	INSERT INTO ON DUPLICATE KEY UPDATE를
+    실행하기 위해서는 PK 설정을 변경해야 한다
+tbl_score는 두개의 칼럼을 기준으로
+		DELETE, UPDATE를 수행하는 문제가 발생한다
+가장 좋은 설계는 UPDATE, DELETE를 수행할때 
+		한개의 칼럼으로 구성된 PK를 기준으로
+		수행하는 것이다.
+*/
 create table tbl_score(
-sc_seq bigint auto_increment primary key, 
-sc_stnum char(8) not null,
-sc_sbcode char(4) not null,
-sc_score int not null
+	-- sc_seq bigint auto_increment primary key, 
+	sc_stnum char(8) not null,
+	sc_sbcode char(4) not null,
+	sc_score int not null,
+	primary key(sc_stnum, sc_sbcode)
 );
+
+/*
+PK는 그대로 살려두고 두개의 칼럼을 묶어 UNIQUE로 설정
+두개의 칼럼의 값이 동시에 같은 경우는 추가하지 말라는 
+제약조건 설정
+*/
+create table tbl_score(
+	sc_seq bigint auto_increment primary key, 
+	sc_stnum char(8) not null,
+	sc_sbcode char(4) not null,
+	sc_score int not null,
+	unique(sc_stnum, sc_sbcode)
+);
+
 DROP table TBL_SCORE;
 select * from tbl_score;
 INSERT INTO tbl_score (sc_stnum,sc_sbcode,sc_score)
@@ -108,3 +135,19 @@ FROM tbl_subject SB
 select count(*) FROM tbl_score
 WHERE sc_stnum = '20210002';
 select * from tbl_score;
+
+-- 한 학생의 3과목에 점수를 개별적으로 insert 하기
+insert into tbl_score(sc_num, sc_sbcode, sc_score)
+values('20210002','S001','90');
+insert into tbl_score(sc_num, sc_sbcode, sc_score)
+values('20210002','S002','90');
+insert into tbl_score(sc_num, sc_sbcode, sc_score)
+values('20210002','S003','90');
+
+insert into tbl_score(sc_num, sc_sbcode, sc_score)
+values
+('20210002','S001','90'),
+('20210002','S002','80'),
+('20210002','S003','70'),
+('20210002','S004','60'),
+('20210002','S005','50')
