@@ -60,6 +60,7 @@ INSERT INTO tbl_score (sc_stnum,sc_sbcode,sc_score)
 VALUES ("20210001","S003",77);
 
 drop table tbl_student;
+drop table tbl_score;
 drop table tbl_subject;
 
 select * from tbl_subject;
@@ -144,10 +145,14 @@ values('20210002','S002','90');
 insert into tbl_score(sc_num, sc_sbcode, sc_score)
 values('20210002','S003','90');
 
-insert into tbl_score(sc_num, sc_sbcode, sc_score)
+-- 한번의 insert 명령문으로 다수의 데이터를 insert
+-- bulk insert
+insert into tbl_score(sc_stnum, sc_sbcode, sc_score)
 values
 ('20210002','S001','90'),
 ('20210002','S002','80'),
 ('20210002','S003','70'),
 ('20210002','S004','60'),
-('20210002','S005','50')
+('20210002','S005','50');
+
+select * from tbl_score;
