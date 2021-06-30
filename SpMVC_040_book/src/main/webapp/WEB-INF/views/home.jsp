@@ -14,6 +14,11 @@
 	margin: 0;
 	padding: 0;
 }
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
 
 p b {
 	color: blue;
@@ -23,7 +28,8 @@ nav#main_nav {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100wv;
+	background-size: 100% 100%;
+	
 }
 nav#main_nav form {
 	margin: 0.6rem;
@@ -37,11 +43,31 @@ nav#main_nav input {
 	border-radius: 10px;
 	
 }
+nav#main_nav select {
+	padding: 8px;
+	width:20%; 
+	border-radius: 10px;
+}
 section.content_box {
 	border: 1px solid green;
 	padding: 12px 16px;
 	display: flex;
 	flex-wrap: wrap;
+	
+	/*
+	검색 결과가 표시되는 영역은 scroll 지정하고 
+	상단의 검색창(nav)은 화면에 고정하기
+	
+	1. body에
+		display : flex
+		flex-direction : colum
+		height : 100vh
+	2. 검색결과창에
+		flex : 1
+		overflow : auto
+	*/
+	flex:1;
+	overflow: auto;
 }
 
 section.content_box div.content {
@@ -87,30 +113,47 @@ a:hover {
 </head>
 <body>
 	<nav id="main_nav">
+	<c:if test="${CAT == 'BOOK'}">
+		<c:set var="pHolder" value="도서 검색어" />
+	</c:if>
+	<c:if test="${CAT == 'MOVIE'}">
+		<c:set var="pHolder" value="영화 검색어" />
+	</c:if>
+	<c:if test="${CAT == 'NEWS'}">
+		<c:set var="pHolder" value="뉴스 검색어" />
+	</c:if>
+	<select name="category">
+		<option value="BOOK" 
+			<c:if test="${CAT == 'BOOK'}" >selected ="selected"</c:if>>도서검색
+			</option>
+		<option value="MOVIE"
+			<c:if test="${CAT == 'MOVIE'}" >selected ="selected"</c:if>>영화검색 
+		</option>
+		<option value="NEWS" 
+			<c:if test="${CAT == 'NEWS'}" >selected ="selected"</c:if>>뉴스검색
+		</option>
+	</select>
 		<form>
-			<input name="search" placeholder="도서명을 입력 후 Enter...">
+			<input name="search" placeholder="${pHolder}를 입력 후 Enter...">
 		</form>
 	</nav>
 
 	<section class="content_box">
-		<c:forEach items="${BOOKS}" var="BOOK">
-			<div class="content">
-				<img src="${BOOK.image}">
-				<div>
-					<p class="title">
-						<a href="${BOOK.link }" target="_NEW">${BOOK.title}</a>
-					</p>
-					<p class="desc">${BOOK.description}</p>
-					<p class="author">
-						<strong>저자 : </strong>${BOOK.author}</p>
-					<p class="publisher">
-						<strong>출판사 : </strong>${BOOK.publisher}
-					</p>
-					
-					<button class="insert">내 서재등록</button>
-				</div>
-			</div>
-		</c:forEach>
+		<%@ include file="/WEB-INF/views/book_list.jsp" %>
+		<%@ include file="/WEB-INF/views/movie_list.jsp" %>
+		<%@ include file="/WEB-INF/views/news_list.jsp" %>
 	</section>
 </body>
+<script>
+	let category = document.querySelector("select[name='category']")
+	
+	category.addEventListener("change",(e)=>{
+			
+		let value = category.value
+		// alert(value)
+		
+		// location.href = "${rootPath}/?category=" + value;
+		location.href = "${rootPath}/naver/" + value;
+	})
+</script>
 </html>
