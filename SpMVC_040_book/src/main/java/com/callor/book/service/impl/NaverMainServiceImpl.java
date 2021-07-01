@@ -17,23 +17,26 @@ import lombok.RequiredArgsConstructor;
 @Service("naverMainServiceV1")
 public class NaverMainServiceImpl {
 
+
 	@Qualifier("naverBookServiceV2")
 	protected final NaverBookService nBookService;
 	
-	public void naverGetData(String cat, String search, Model model) throws MalformedURLException, IOException, ParseException {
+	public void naverGetData(String cat, String search,Model model) throws MalformedURLException, IOException, ParseException {
+		
 		if(search != null && !search.equals("")) {
 			if(cat.equalsIgnoreCase("BOOK")) {
-				// 도서검색 서비스
+				// 도서 검색 서비스
+				
 				String queryURL = nBookService.queryURL(search);
 				String jSonString = nBookService.getJsonString(queryURL);
 				List<BookDTO> books = nBookService.getNaverList(jSonString);
 				model.addAttribute("BOOKS",books);
-			} else if(cat.equalsIgnoreCase("NEWS")) {
-				// 뉴스검색 서비스
+				
+			} else if (cat.equalsIgnoreCase("NEWS")) {
+				// 뉴스 검색 서비스
 			} else if(cat.equalsIgnoreCase("MOVIE")) {
-				//영화 검색 서비스
+				// 영화검색 서비스
 			}
-		} 
-		
+		}
 	}
 }

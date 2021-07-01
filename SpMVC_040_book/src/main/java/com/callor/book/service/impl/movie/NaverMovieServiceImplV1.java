@@ -39,7 +39,7 @@ public class NaverMovieServiceImplV1 implements NaverMovieService{
 				e.printStackTrace();
 			}
 			StringBuilder queryURL = new StringBuilder();
-			queryURL.append(NaverSecret.NURL.MOVIE); // queryString += BookURL
+			queryURL.append(NaverSecret.NURL.MOVIE); // queryString += MovieURL
 			
 			String queryString = String.format("?query=%s", searchUTF8);
 			queryURL.append(queryString);

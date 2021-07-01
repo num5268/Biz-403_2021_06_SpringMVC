@@ -20,20 +20,20 @@ public class NaverExitController {
 
 	
 	protected final NaverBookService nBookService;
-	
 	public NaverExitController(@Qualifier("naverServiceV1") NaverBookService nBookService) {
 		this.nBookService = nBookService;
 	}
+	
 	@ResponseBody
-	@RequestMapping(value="/book", method=RequestMethod.GET,
-				produces = "application/json;char=UTF8" )
+	@RequestMapping(value="/book",
+				method=RequestMethod.GET)
 	public List<BookDTO> book(String search) throws MalformedURLException, IOException, ParseException {
 		
-		String queryURL = nBookService.queryURL(search);
-		String jsonString = nBookService.getJsonString(queryURL);
-		
+		String queryURL =  nBookService.queryURL(search);
+		String  jsonString = nBookService.getJsonString(queryURL);
 		List<BookDTO> bookList = nBookService.getNaverList(jsonString);
 		return bookList;
+	
 	}
 	
 }

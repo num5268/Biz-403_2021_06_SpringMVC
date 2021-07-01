@@ -21,16 +21,18 @@ import lombok.RequiredArgsConstructor;
 // @RequestMapping(value = "/book")
 public class NaverBookController {
 
-	
+
 	@Qualifier("naverServiceV1")
 	protected final NaverBookService nBookService;
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String home(@RequestParam(name = "search", required = false, defaultValue = "") 
-	String search, Model model) 
-			throws MalformedURLException, IOException, ParseException {
+	public String home(
+			@RequestParam(name = "search", 
+					required = false, 
+					defaultValue = "") String search, 
+			Model model) throws MalformedURLException, IOException, ParseException {
 
-		//model.addAttribute("pHolder", "도서 검색어");
+//		model.addAttribute("pHolder", "도서 검색어");
 		model.addAttribute("CAT","BOOK");
 		if (search != null && !search.equals("")) {
 			String queryURL = nBookService.queryURL(search.trim());
@@ -40,5 +42,4 @@ public class NaverBookController {
 		}
 		return "home";
 	}
-
 }
