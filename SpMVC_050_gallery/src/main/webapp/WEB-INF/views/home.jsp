@@ -9,22 +9,40 @@
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
 </head>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+	header {
+		height:100px;	
+	}
+	header h1 {
+		text-align: center;
+	}
+</style>
 <body>
-<h1>내 갤러리</h1>
-
-<c:choose>
-	<c:when test="${BODY eq 'GA-INPUT'}">
-		<%@ include file="/WEB-INF/views/gallery/input.jsp" %>
-	</c:when>
-	<c:when test="${BODY eq 'GA-LIST'}">
-		<%@ include file="/WEB-INF/views/gallery/list.jsp" %>
-		<a href="${rootPath}/gallery/input"> 이미지 등록</a>
-	</c:when>
-	<c:otherwise>
-		<a href="${rootPath}/gallery/input"> 이미지 등록</a>
-	</c:otherwise>
-</c:choose>
-
+<header>
+	<h1>내 갤러리</h1>
+</header>
+	<c:choose>
+		<c:when test="${BODY eq 'GA-INPUT'}">
+			<%@ include file="/WEB-INF/views/gallery/input.jsp" %>
+		</c:when>
+		<c:when test="${BODY eq 'GA-LIST'}">
+			<%@ include file="/WEB-INF/views/gallery/list.jsp" %>
+			<a href="${rootPath}/gallery/input"> 이미지 등록</a>
+		</c:when>
+			<c:when test="${BODY eq 'GA-DETAIL'}">
+			<%@ include file="/WEB-INF/views/gallery/detail.jsp" %>
+			<a href="${rootPath}/gallery">리스트로</a>
+		</c:when>
+		
+		<c:otherwise>
+			<a href="${rootPath}/gallery/input"> 이미지 등록</a>
+		</c:otherwise>
+	</c:choose>
 
 <c:forEach items="${FILSE}" var="FILE">
 	<a href="${rootPath}/files/${FILE}" target="_NEW">

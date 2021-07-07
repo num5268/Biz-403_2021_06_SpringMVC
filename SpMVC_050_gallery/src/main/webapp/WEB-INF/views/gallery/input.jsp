@@ -2,9 +2,51 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-
+<style>
+	section.main_sec {
+		background-color: #90e0d8;
+		width: 500px;
+		height: 550px;
+		border-radius: 10px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+	section.main_sec label {
+		font-size: 20px;
+		margin-bottom: 20px;
+		text-align: center;
+		display: inline-block;
+		width: 100%;
+	
+	}
+	section.main_sec input,textarea {
+		display: flex;
+		border: hidden;
+		border-radius: 5px;
+		width: 150px;
+		height: 30px;
+		text-align: center;
+		transform: translate(-50%,-50%);
+		position: relative;
+		left: 50%;
+	}
+	section.main_sec textarea {
+		margin-top: 20px;
+	}
+	section.main_sec button {
+		border-style: none;
+		width: 50px;
+		background-color: white;
+		border-radius: 5px;
+		position: relative;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+</style>
 <form method="POST" enctype="multipart/form-data">
-
+	<section class="main_sec">
 	<div>
 		<label>작성자</label>
 		<input name="g_writer" value="${CMD.g_writer}">
@@ -35,4 +77,5 @@
 		<input type="file" multiple="multiple" name="m_file"/>
 	</div>
 	<button>전송</button>
+	</section>
 </form>
