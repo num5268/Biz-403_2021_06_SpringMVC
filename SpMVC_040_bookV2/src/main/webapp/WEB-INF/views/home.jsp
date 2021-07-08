@@ -77,7 +77,7 @@ section.content_box div.content {
 	width: 30%;
 	height: 30vh;
 	overflow: auto;
-}
+} 
 
 section.content_box div.content img {
 	flex: 1;
@@ -128,6 +128,7 @@ te:last-child td {
 </style>
 </head>
 <body>
+	
 	<nav id="main_nav">
 	<c:if test="${CAT == 'BOOK'}">
 		<c:set var="pHolder" value="도서 검색어" />
