@@ -6,19 +6,15 @@
 <style>
 	div.ga_box{
 		display: flex;
-	}
-	div.ga_box div:first-of-type {
-		flex:1;
-	}
-	div.ga_box div:last-of-type {
-		flex:3;
+		justify-content: center;
+		margin-top:30px;
+		margin-bottom: 50px;
 	}
 
-	div.ga_box div img {
+	div.ga_box div.img_box img {
 		width: 200px;
-		border-radius: 10px;
-		border: 3px solid black;
-		display: flex;
+		display: inline-block;
+		box-sizing: border-box;
 	}
 	div.ga_box div {
 		margin: 20px
@@ -29,32 +25,32 @@
 		font-style: normal;
 		font-weight: bold;
 	}
-	p {
+	div.text_box p, a {
 		font-size: 20px;
-		position: relative;
-		top:20px;
-		left: 10px;
-		
-	}
-	
-	a {
+		display: flex;
 		text-decoration: none;
 		color: black;
-		position: relative;
-		top:20px;
-		left: 10px;
-		
+		position:relative;
+		top: 30%;
 	}
+	
 }
 </style>
 <c:forEach items="${GAS}" var="GALLERY">
 <div class="ga_box">
-	<div>
+	<div class="img_box">
+		<c:if test="${empty GALLERY.g_image}">
+			<img src="${rootPath}/files/noImage.png" width="100%">
+		</c:if>
+		
+		<c:if test="${not empty GALLERY.g_image}">
+			<img src="${rootPath}/files/${GALLERY.g_image}" width="100%">
+		</c:if>
 		<img src="${rootPath}/files/${GALLERY.g_image}" >
 	</div>
-	<div>
+	<div class="text_box">
 		<h3>
-		<a href="${rootPath}/gallery/detail/${GALLERY.g_seq}">
+		<a href="${rootPath}/gallery/detail2/${GALLERY.g_seq}">
 			${GALLERY.g_subject}
 		</a>
 		</h3>

@@ -27,19 +27,19 @@
 	header h1 {
 		text-align: center;
 	}
-	nav#main_nav ul {
-	display: flex;
-	list-style: none;
+	section.main_sec a {
+		display: flex;
+		justify-content: center;
+		
 	}
-	nav#main_nav ul li {
-	padding-left: 10px;
-	}
+	
 </style>
 <body>
 <header>
 	<h1>내 갤러리</h1>
 	<%@ include file="/WEB-INF/views/include/include.jsp" %>
 </header>
+<section class="main_sec">
 	<c:choose>
 		<c:when test="${BODY eq 'GA-INPUT'}">
 			<%@ include file="/WEB-INF/views/gallery/input.jsp" %>
@@ -52,6 +52,10 @@
 		
 		<c:when test="${BODY eq 'GA-DETAIL'}">
 			<%@ include file="/WEB-INF/views/gallery/detail.jsp" %>
+		</c:when>
+		
+		<c:when test="${BODY eq 'GA-DETAIL-V2'}">
+			<%@ include file="/WEB-INF/views/gallery/detail2.jsp" %>
 		</c:when>
 		
 		<c:when test="${BODY eq 'JOIN'}">
@@ -74,7 +78,7 @@
 	width="100px" height="100px"/>
 	</a>
 </c:forEach>
-
+</section>
 <img src="${rootPath}/files/title.jpg" width="400px"/>
 
 </body>
@@ -89,7 +93,7 @@
 				if(menu.id === "join"){
 					location.href = "${rootPath}/member/join"
 				} else if(menu.id === "login"){
-					location.href = "${rootPath}/member/login"
+					location.href = "${rootPath}/member/login/nav"
 				} else if(menu.id === "logout"){
 					location.href = "${rootPath}/member/logout"
 				} else if(menu.id === "image_create") {

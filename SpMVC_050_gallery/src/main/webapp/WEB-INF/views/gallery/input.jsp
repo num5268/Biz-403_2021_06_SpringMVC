@@ -5,8 +5,8 @@
 <style>
 	section.main_sec {
 		background-color: #90e0d8;
-		width: 500px;
-		height: 550px;
+		width: 550px;
+		height: 600px;
 		border-radius: 10px;
 		position: absolute;
 		top: 50%;
@@ -19,7 +19,8 @@
 		text-align: center;
 		display: inline-block;
 		width: 100%;
-	
+		border-style: none;
+		
 	}
 	section.main_sec input,textarea {
 		display: flex;
