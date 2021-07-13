@@ -142,7 +142,7 @@ te:last-child td {
 	<select name="category">
 		<option value="BOOK" 
 			<c:if test="${CAT == 'BOOK'}" >selected ="selected"</c:if>>도서검색
-			</option>
+		</option>
 		<option value="MOVIE"
 			<c:if test="${CAT == 'MOVIE'}" >selected ="selected"</c:if>>영화검색 
 		</option>
