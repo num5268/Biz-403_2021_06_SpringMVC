@@ -9,15 +9,15 @@ import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Builder
 public class FileDTO {
-
-	private Long file_seq; //	BIGINT	AUTO_increment	PRIMARY KEY
-	private Long file_gseq; //	BIGINT	NOT NULL	
-	private String file_original; //	VARCHAR(125)	NOT NULL	
-	private String file_upname; //	VARCHAR(125)	NOT NULL	
+	
+	private Long file_seq;//	BIGINT
+	private Long file_gseq;//	BIGINT
+	private String file_original;//	VARCHAR(125)
+	private String file_upname;//	VARCHAR(125)
 
 }

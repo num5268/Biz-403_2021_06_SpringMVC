@@ -9,33 +9,29 @@
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
+	<!-- mybatis연동한 DBMS 프로젝트를 위하여 설정할 bean -->
 	<!-- dataSource -->
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/myLibs" />
-		<property name="username" value="gbUser" />
-		<property name="password" value="12345" />
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/mylibs"/>
+		<property name="username"  value="gbUser"/>
+		<property name="password"  value="12345"/>
 	</bean>
-	
 	<!-- SqlSessionFactory -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="ds" />
-		<property name="mapperLocations" value="/WEB-INF/spring/mapper/*-mapper.xml" />
-		<property name="typeAliasesPackage" value="com.callor.gallery.model" />
+	<bean id="sqlSession" 
+			class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"/>
+		<property name="typeAliasesPackage" value="com.callor.gallery.model"/>
+		<property name="mapperLocations" value="/WEB-INF/spring/mapper/*-mapper.xml"/>
 	</bean>
+	<mybatis-spring:scan base-package="com.callor.gallery.persistance.ext"/>
 	
-	<mybatis-spring:scan base-package="com.callor.gallery.persistance.ext" />
-
 	<!-- SqlSessionTemplate -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSession" />
+		<constructor-arg ref="sqlSession"/>
 	</bean>
-	
 	<!-- TransactionManager -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="ds" />
-	</bean>
 	
-	
+
 
 </beans>

@@ -34,12 +34,6 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -96,6 +90,8 @@
 			<version>1.4</version>
 		</dependency>
 
+
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -131,6 +127,7 @@
 			<version>1.18.20</version>
 			<scope>provided</scope>
 		</dependency>
+
 
 		<!-- Servlet -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->

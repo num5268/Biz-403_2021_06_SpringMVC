@@ -14,7 +14,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @Builder
 public class MemberVO {
-
 	private String m_userid;
 	private String m_password;
 	private String re_password;
@@ -22,4 +21,7 @@ public class MemberVO {
 	private String m_tel;
 	
 	private int m_level;
+	
 }
+
+
