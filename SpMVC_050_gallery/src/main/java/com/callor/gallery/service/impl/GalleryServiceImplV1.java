@@ -8,16 +8,19 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.gallery.model.FileDTO;
 import com.callor.gallery.model.GalleryDTO;
 import com.callor.gallery.model.GalleryFilesDTO;
+import com.callor.gallery.model.PageDTO;
 import com.callor.gallery.persistance.ext.FileDao;
 import com.callor.gallery.persistance.ext.GalleryDao;
 import com.callor.gallery.service.FileService;
 import com.callor.gallery.service.GalleryService;
+import com.callor.gallery.service.PageService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +43,9 @@ public class GalleryServiceImplV1 implements GalleryService {
 	
 	@Qualifier("fileServiceV2")
 	protected final FileService fService;
+	
+	protected final PageService pageService;
+	
 	
 	/*
 	 * @Autowired가 설정된 변수, method, 객체 등을 만나면
@@ -188,8 +194,15 @@ public class GalleryServiceImplV1 implements GalleryService {
 		//   pageNum가 2라면 list에서 10번째 요소 ~ 19번째 요소까지 추출하기
 		//   pageNum가 3라면 list에서 20번째 요소 ~ 29번째 요소까지 추출하기
 		
+		int totalCount = gaListAll.size();
+		
 		int start = (pageNum - 1) * 10;
 		int end = pageNum * 10;
+		
+		if( pageNum * 10 > totalCount - 10) {
+			end = totalCount;
+			start = end - 10;
+		}
 		
 		List<GalleryDTO> pageList = new ArrayList<>();
 		for(int i = start; i < end ; i++) {
@@ -197,6 +210,28 @@ public class GalleryServiceImplV1 implements GalleryService {
 		}
 		return pageList;
 	}
+	
+	@Override
+	public List<GalleryDTO> selectAllPage(int intPageNum, Model model) throws Exception {
+
+		List<GalleryDTO> galleryAll = gaDao.selectAll();
+		int totalListSize = galleryAll.size();
+		
+		PageDTO pageDTO = pageService.makePagination(totalListSize, intPageNum);
+		
+		List<GalleryDTO> pageList = new ArrayList<>();
+		
+		for(int i = pageDTO.getOffset() ; i < pageDTO.getLimit(); i++) {
+			pageList.add(galleryAll.get(i));
+		}
+
+		model.addAttribute("PAGE_NAV",pageDTO);
+		model.addAttribute("GALLERYS",pageList);
+		return null;
+	
+	}
+	
+	
 
 	@Override
 	public List<GalleryDTO> findBySearchPage(int pageNum, String search) {
@@ -209,5 +244,33 @@ public class GalleryServiceImplV1 implements GalleryService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<GalleryDTO> findBySearchPage(String search_column, 
+						String search_text, int pageNum, Model model) {
+		
+		List<GalleryDTO> galleryList 
+			= gaDao.findBySearch(search_column, search_text);
+		
+		int totalListSize = galleryList.size();
+		PageDTO pageDTO = pageService.makePagination(totalListSize, pageNum);
+		
+		List<GalleryDTO> pageList = new ArrayList<>();
+		
+		if(pageDTO == null) {
+			model.addAttribute("GALLERYS",galleryList);
+			return null;
+		}
+		
+		for(int i = pageDTO.getOffset() ; i < pageDTO.getLimit() ; i++) {
+			pageList.add(galleryList.get(i));
+		}
+		model.addAttribute("GALLERYS",pageList);
+		
+		return null;
+	}
+
+
+
 	
 }
